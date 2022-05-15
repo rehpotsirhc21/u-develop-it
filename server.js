@@ -19,10 +19,37 @@ const db = mysql.createConnection(
   },
   console.log("Connected to the election database")
 );
+// TODO: replace query statements with API routes
+// db.query(` SELECT * FROM candidates`, (err, rows) => {
+//   console.log(rows);
+// });
+// find one canidates
+// db.query(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(row);
+// });
 
-db.query(` SELECT * FROM candidates`, (err, rows) => {
-  console.log(rows);
-});
+//delete a canidate
+// db.query(`DELETE FROM candidates WHERE id = ?`, 1, (err, result)=> {
+//   if(err) {
+//     console.log(err)
+//   }
+//   console.log(result);
+// });
+
+// create canidate
+const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected)
+VALUES (?,?,?,?)`;
+const params = [1, "Ronald", "Firbank", 1];
+
+// db.query(sql, params, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
 
 app.use((req, res) => {
   res.status(404).end();
